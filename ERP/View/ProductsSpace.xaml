@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="ERP.View.ProductsSpace"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="500">
+    <Grid DataContext="{Binding ProductsViewModel, Source={StaticResource Locator}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ToolBarTray Grid.Row="0">
+            <ToolBar>
+                <ToolBar.Resources>
+                    <Style TargetType="StackPanel">
+                        <Setter Property="MaxHeight" Value="16"/>
+                    </Style>
+                </ToolBar.Resources>
+                <Button Name="btn_Add" Command="{Binding ButtonCommand}" CommandParameter="Add">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="../Auxiliary/Resources/Images/add.ico"/>
+                        <TextBlock Text="添加"/>
+                    </StackPanel>
+                </Button>
+                <Button Name="btn_Delete" Command="{Binding ButtonCommand}" CommandParameter="Delete">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="../Auxiliary/Resources/Images/delete.ico"/>
+                        <TextBlock Text="删除"/>
+                    </StackPanel>
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <ListView Grid.Row="1" Margin="5" Background="LightYellow" Name="lstProducts" ItemsSource="{Binding ProductList, Mode=TwoWay}" SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" >
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <EventSetter Event="MouseDoubleClick" Handler="HandleDoubleClick"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView AllowsColumnReorder="True" >
+                        <GridViewColumn DisplayMemberBinding="{Binding ProductName}" Header="产品名称" Width="200"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding ProductSize}" Header="产品大小" Width="200"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Count}" Header="库存量" Width="200"/>
+                    </GridView>
+                </ListView.View>                
+            </ListView>
+        </Grid>   
+    </Grid>
+</UserControl>

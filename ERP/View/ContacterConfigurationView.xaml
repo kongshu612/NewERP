@@ -1,0 +1,23 @@
+﻿<Window x:Class="ERP.View.ContacterConfigurationView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ERP.View"
+        mc:Ignorable="d"
+        Title="联系人编辑" Height="300" Width="400" Closing="WndClosing" WindowStartupLocation="CenterOwner">
+    <Grid Background="AliceBlue">
+        <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,10">
+                <TextBlock Text="姓名: " VerticalAlignment="Center"/>
+                <TextBox Name="txt_ContacterName" Text="{Binding Name ,UpdateSourceTrigger=PropertyChanged}" Width="100" Margin="5,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,10" Grid.Row="1">
+                <TextBlock Text="联系电话: " VerticalAlignment="Center"/>
+                <TextBox Name="txt_ContacterTelphone" Text="{Binding Telephones,UpdateSourceTrigger=PropertyChanged}" Width="200" Margin="5,0,0,0"/>
+            </StackPanel>
+        </Grid>
+</Window>

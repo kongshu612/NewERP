@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Views="clr-namespace:ERP.View"
+                    xmlns:vm="clr-namespace:ERP.ViewModel"
+                    >
+    <DataTemplate DataType="{x:Type vm:ProductsViewModel}">
+        <Views:ProductsSpace/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:CatalogsViewModel}">
+        <Views:CatalogListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:CustomerListViewModel}">
+        <Views:CustomersListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:OrderListViewModel}">
+        <Views:OrderListView/>
+    </DataTemplate>
+    <!--<DataTemplate DataType="{x:Type vm:CustomerSpaceViewModel}">
+        <Views:CustomerSpace/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:OrdersSpaceViewModel}">
+        <Views:OrdersSpaceView/>
+    </DataTemplate>-->
+    
+</ResourceDictionary>

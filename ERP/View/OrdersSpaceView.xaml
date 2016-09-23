@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="ERP.View.OrdersSpaceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ERP.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="700">
+    <Grid DataContext="{Binding OrdersSpace, Source={StaticResource Locator}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ToolBarTray Grid.Row="0">
+            <ToolBarTray.Resources>
+                <Style TargetType="StackPanel">
+                    <Setter Property="MaxHeight" Value="16"/>
+                </Style>
+            </ToolBarTray.Resources>
+            <ToolBar>
+                <Button Name="btn_Add" Command="{Binding AddCommand}" CommandParameter="OrdersSpace">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="../Auxiliary/Resources/Images/add.ico"/>
+                        <TextBlock Text="添加"/>
+                    </StackPanel>
+                </Button>
+                <Button Name="btn_Delete" Command="{Binding DeleteCommand}" CommandParameter="OrdersSpace">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="../Auxiliary/Resources/Images/delete.ico"/>
+                        <TextBlock Text="删除"/>
+                    </StackPanel>
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+        <ListView Grid.Row="1" ItemsSource="{Binding Orders}" SelectedItem="{Binding SelectedOrder, Mode=TwoWay}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <EventSetter Event="MouseDoubleClick" Handler="Event_MouseDoubleClick"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="产品名称" DisplayMemberBinding="{Binding SelectedProduct.ProductName}" Width="70"/>
+                    <GridViewColumn Header="客户" DisplayMemberBinding="{Binding SelectedCustomer.Name}" Width="50"/>
+                    <GridViewColumn Header="客户联系人" DisplayMemberBinding="{Binding SelectedContact.Name}" Width="70"/>
+                    <GridViewColumn Header="单价" DisplayMemberBinding="{Binding PricePer}" Width="50"/>
+                    <GridViewColumn Header="数量" DisplayMemberBinding="{Binding TotalCount}" Width="50"/>
+                    <GridViewColumn Header="总价" DisplayMemberBinding="{Binding TotalPrice}" Width="70"/>
+                    <GridViewColumn Header="快递单号" DisplayMemberBinding="{Binding MailID}" Width="100"/>
+                    <GridViewColumn Header="发货时间" DisplayMemberBinding="{Binding SendTime}" Width="100"/>
+                    <GridViewColumn Header="支付状态" DisplayMemberBinding="{Binding IsPayed}" Width="50"/>
+                </GridView>
+            </ListView.View>            
+        </ListView>
+            
+    </Grid>
+</UserControl>

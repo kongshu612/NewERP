@@ -1,0 +1,16 @@
+C:\DevelopSpace\ERP_Dev\ERP_Dev\ERP\Test\bin\Debug\Test.exe.config
+C:\DevelopSpace\ERP_Dev\ERP_Dev\ERP\Test\bin\Debug\Test.exe
+C:\DevelopSpace\ERP_Dev\ERP_Dev\ERP\Test\bin\Debug\Test.pdb
+C:\DevelopSpace\ERP_Dev\ERP_Dev\ERP\Test\bin\Debug\DBContext.dll
+C:\DevelopSpace\ERP_Dev\ERP_Dev\ERP\Test\bin\Debug\EntityFramework.dll
+C:\DevelopSpace\ERP_Dev\ERP_Dev\ERP\Test\bin\Debug\EntityFramework.SqlServer.dll
+C:\DevelopSpace\ERP_Dev\ERP_Dev\ERP\Test\bin\Debug\Model.dll
+C:\DevelopSpace\ERP_Dev\ERP_Dev\ERP\Test\bin\Debug\ModelMapper.dll
+C:\DevelopSpace\ERP_Dev\ERP_Dev\ERP\Test\bin\Debug\DBContext.pdb
+C:\DevelopSpace\ERP_Dev\ERP_Dev\ERP\Test\bin\Debug\EntityFramework.xml
+C:\DevelopSpace\ERP_Dev\ERP_Dev\ERP\Test\bin\Debug\EntityFramework.SqlServer.xml
+C:\DevelopSpace\ERP_Dev\ERP_Dev\ERP\Test\bin\Debug\Model.pdb
+C:\DevelopSpace\ERP_Dev\ERP_Dev\ERP\Test\bin\Debug\ModelMapper.pdb
+C:\DevelopSpace\ERP_Dev\ERP_Dev\ERP\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
+C:\DevelopSpace\ERP_Dev\ERP_Dev\ERP\Test\obj\Debug\Test.exe
+C:\DevelopSpace\ERP_Dev\ERP_Dev\ERP\Test\obj\Debug\Test.pdb

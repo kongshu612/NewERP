@@ -1,0 +1,34 @@
+﻿<Window x:Class="ERP.View.ProductConfigureView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ERP.View"
+        mc:Ignorable="d"
+        Title="产品编辑" Height="300" Width="400" Closing="Wnd_Closing" WindowStartupLocation="CenterOwner">
+    <Grid Background="AliceBlue">
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10">
+                <TextBlock Text="产品名称: " VerticalAlignment="Center"/>
+                <TextBox Name="txt_ProName" Text="{Binding ProductName ,UpdateSourceTrigger=PropertyChanged}" Width="100" Margin="5,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10" Grid.Column="1">
+                <TextBlock Text="产品尺寸: Φ" VerticalAlignment="Center"/>
+                <TextBox Name="txt_ProSize" Text="{Binding ProductSize,UpdateSourceTrigger=PropertyChanged}" Width="100" Margin="5,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10" Grid.Row="1">
+                <TextBlock Text="库存量: " VerticalAlignment="Center"/>
+                <TextBox Name="txt_ProductCount" Text="{Binding Count,UpdateSourceTrigger=PropertyChanged}" Width="100" Margin="5,0,0,0"/>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Window>

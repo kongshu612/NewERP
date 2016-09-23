@@ -1,0 +1,27 @@
+<Application x:Class="ERP.App" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:vm="clr-namespace:ERP.ViewModel" 
+             xmlns:Converter="clr-namespace:ERP.Auxiliary.Converters"
+             StartupUri="View/WorkSpace.xaml" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             d1p1:Ignorable="d" 
+             xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Auxiliary\Resources\Styles.xaml"/>
+                <ResourceDictionary Source="Auxiliary\Resources\DataTemplates.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+      <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" />
+            <Converter:CatalogsConvert x:Key="CatalogConvert"/>
+            <Converter:SelectedCatalogConvert x:Key="SelectedCatalogConvert"/>
+            <Converter:ProductsConvert x:Key="ProductsConvert"/>
+            <Converter:SelectedProductConvert x:Key="SelectedProductConvert"/>
+            <Converter:ContactersConvert x:Key="ContactersConvert"/>
+            <Converter:SelectedContacterConvert x:Key="SelectedContacterConvert"/>
+            <Converter:CustomersConvert x:Key="CustomersConvert"/>
+            <Converter:SelectedCustomerConvert x:Key="SelectedCustomerConvert"/>
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>
