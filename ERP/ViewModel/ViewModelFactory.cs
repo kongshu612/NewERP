@@ -134,6 +134,8 @@ namespace ERP.ViewModel
         }
         public Catalog GetCatalogFromCatalogViewModel(CatalogViewModel catalogvm)
         {
+            if (catalogvm == null)
+                return null;
             return _idr.GetCatalogByName(catalogvm.CatalogName);
         }
 

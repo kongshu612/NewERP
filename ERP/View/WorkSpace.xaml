@@ -7,6 +7,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Menu Grid.Row="0" HorizontalAlignment="Left" Background="White" BorderBrush="Black">
             <MenuItem Header="生产管理" Style="{StaticResource MenuItemStytle}">
@@ -42,29 +43,20 @@
             </MenuItem>
         </Menu>
 
-        <!--<StatusBar Grid.Row="2" Height="30"  VerticalAlignment="Bottom" Margin="0,2,0,0" HorizontalAlignment="Stretch">
+        <StatusBar Grid.Row="2" Height="30"  VerticalAlignment="Bottom" Margin="0,2,0,0" HorizontalAlignment="Stretch">
             <StatusBar.Resources>
                 <Style TargetType="TextBlock">
                     <Setter Property="FontSize" Value="17"/>
                     <Setter Property="Foreground" Value="Blue"/>
                 </Style>
             </StatusBar.Resources>
-            <StatusBarItem HorizontalAlignment="Left" Margin="10,0,0,0">
-                <TextBlock Text="当前时间: " />
-            </StatusBarItem>
-            <StatusBarItem HorizontalAlignment="Left">
-                <TextBlock Text="{Binding CurrentTime}" />
-            </StatusBarItem>
-            <StatusBarItem HorizontalAlignment="Center">
-                <Grid Name="elementPlaceHolder" />
-            </StatusBarItem>
-            <StatusBarItem HorizontalAlignment="Right" Margin="10,0,10,0">
+            <StatusBarItem HorizontalAlignment="Left" Margin="10,0,10,0">
                 <DockPanel>
                     <TextBlock Text="当前操作: " DockPanel.Dock="Left" />
                     <TextBlock Text="{Binding StatusMessage}" DockPanel.Dock="Right" MinWidth="100"/>
                 </DockPanel>
             </StatusBarItem>
-        </StatusBar>-->
+        </StatusBar>
 
         <ContentControl Grid.Row="1" Content="{Binding PlaceHolderViewModel}">
             

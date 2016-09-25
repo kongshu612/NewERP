@@ -31,8 +31,14 @@ namespace ERP.View
             ProductViewModel pvm = this.DataContext as ProductViewModel;
             if(!pvm.SaveToDb())
             {
-                e.Cancel = true;
-                MessageBox.Show("Error occur while save to DB");
+                if (MessageBox.Show("产品信息保存出错，请检查是否提供了名称等信息.确定，继续编辑，取消，信息不会被保存", "Error", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    return;
+                }
             }
 
         }

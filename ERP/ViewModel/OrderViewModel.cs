@@ -190,6 +190,8 @@ namespace ERP.ViewModel
         }
         public bool SaveDBRecord()
         {
+            if (Product == null || Contacter == null)
+                return false;
             _order.ProductId = Product.ProductId;
             _order.ContacterId = Contacter.ContacterId;
             if (!ValidateProperties())

@@ -30,8 +30,14 @@ namespace ERP.View
             ContacterViewModel cvm = this.DataContext as ContacterViewModel;
             if(!cvm.SaveToDB())
             {
-                MessageBox.Show("Error occur while saving to DB");
-                e.Cancel = true;
+                if (MessageBox.Show("联系人信息无法保存，检查是否提供了姓名等信息。确定：重新编辑，取消：数据无法保存", "Error", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    return;
+                }
             }
         }
     }

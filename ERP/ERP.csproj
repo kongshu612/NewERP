@@ -38,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Startup.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DataRepository">
       <HintPath>..\DataRepository\bin\Debug\DataRepository.dll</HintPath>
@@ -344,6 +347,12 @@
     <Resource Include="Auxiliary\Resources\Images\SY\操作员管理.ico" />
     <Resource Include="Auxiliary\Resources\Images\SY\操作权限.ico" />
     <Resource Include="Auxiliary\Resources\Images\UNCLAIM.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Auxiliary\Resources\Images\Startup.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Startup.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.101.0\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.101.0\build\net40\System.Data.SQLite.Core.targets')" />

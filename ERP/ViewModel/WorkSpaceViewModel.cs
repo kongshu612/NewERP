@@ -17,6 +17,7 @@ namespace ERP.ViewModel
     {
         private ViewModelBase _placeHolderViewModel;
         private readonly IViewModelFactory _ivf;
+        private string _statusMessage;
 
         public ViewModelBase PlaceHolderViewModel
         {
@@ -33,6 +34,18 @@ namespace ERP.ViewModel
                 }
             }
         }
+        public string StatusMessage
+        {
+            get
+            {
+                return _statusMessage;
+            }
+            set
+            {
+                _statusMessage = value;
+                RaisePropertyChanged("StatusMessage");
+            }
+        }
 
         private bool CanExecuteMenuClickCommand(string param)
         {
@@ -46,21 +59,25 @@ namespace ERP.ViewModel
                 case "Products":
                     {                        
                         PlaceHolderViewModel = vml.ProductsViewModel;
+                        StatusMessage = "产品编辑";
                         break;
                     }
                 case "Catalogs":
                     {
                         PlaceHolderViewModel = vml.CatalogsViewModel;
+                        StatusMessage = "客户类型编辑";
                         break;
                     }
                 case "Customers":
                     {
                         PlaceHolderViewModel = vml.CustomerListViewModel;
+                        StatusMessage = "客户编辑";
                         break;
                     }
                 case "Orders":
                     {
                         PlaceHolderViewModel = vml.OrderListViewModel;
+                        StatusMessage = "订单编辑";
                         break;
                     }
                 //case "Customers": SpaceDataContext = ServiceLocator.Current.GetInstance<CustomerSpaceViewModel>(); StatusMessage = "客户类型"; break;

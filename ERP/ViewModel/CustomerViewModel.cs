@@ -177,6 +177,8 @@ namespace ERP.ViewModel
         public bool SaveToDb()
         {
             // we need to add process to modify the contacterlist here.
+            if (Catalog == null)
+                return false;
             _customer.Catalog = _ivf.GetCatalogFromCatalogViewModel(Catalog);
             return _ivf.Update(_customer);
         }

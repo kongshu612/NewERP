@@ -1,4 +1,0 @@
-C:\DevelopSpace\ERP_Dev\ERP_Dev\ERP\Model\bin\Debug\Model.dll
-C:\DevelopSpace\ERP_Dev\ERP_Dev\ERP\Model\bin\Debug\Model.pdb
-C:\DevelopSpace\ERP_Dev\ERP_Dev\ERP\Model\obj\Debug\Model.dll
-C:\DevelopSpace\ERP_Dev\ERP_Dev\ERP\Model\obj\Debug\Model.pdb

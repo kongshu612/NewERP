@@ -29,7 +29,7 @@ namespace ERP.View
             OrderViewModel order = this.DataContext as OrderViewModel;
             if(!order.SaveDBRecord())
             {
-                if(MessageBox.Show("Error occur,while saving to DB,Keep editting or discard it in DB","Error",MessageBoxButton.YesNo)==MessageBoxResult.Yes)
+                if (MessageBox.Show("订单信息无法保存，检查是否提供了姓名等信息。确定：重新编辑，取消：数据无法保存", "Error", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     e.Cancel = true;
                 }

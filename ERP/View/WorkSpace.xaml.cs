@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ERP.Auxiliary;
+using System.IO;
 
 namespace ERP.View
 {
@@ -22,11 +23,32 @@ namespace ERP.View
         public WorkSpace()
         {
             InitializeComponent();
+            CreateShortCut();
         }
 
         private void win_OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             
+        }
+        private void CreateShortCut()
+        {
+            string deskDir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            string shortCutFullPath = deskDir + "\\ERP.url";
+            if (File.Exists(shortCutFullPath))
+            {
+                return;
+            }
+            using (StreamWriter writer = new StreamWriter(shortCutFullPath))
+            {
+                string app = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                writer.WriteLine("[InternetShortcut]");
+                writer.WriteLine("URL=file:///" + app);
+                writer.WriteLine("IconIndex=0");
+                string icon = app.Replace('\\', '/');
+                writer.WriteLine("IconFile=" + icon);
+                writer.Flush();
+            }
+            return;
         }
     }
 }

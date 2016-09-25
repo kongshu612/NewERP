@@ -35,6 +35,7 @@ namespace ERP.View
                 if (each.Title == "ERP系统工作窗口")
                 {
                     ccv.Owner = each;
+                    break;
                 }
             }
             ccv.ShowDialog();
