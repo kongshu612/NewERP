@@ -53,7 +53,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CatalogMapper.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="ContactorMapper.cs" />
     <Compile Include="CustomerMapper.cs" />
     <Compile Include="OrderMapper.cs" />

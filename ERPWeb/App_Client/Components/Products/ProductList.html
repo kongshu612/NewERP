@@ -1,0 +1,39 @@
+﻿<div>
+    <button class="glyphicon glyphicon-plus" ng-click="$ctrl.AddProduct()">添加</button>
+    <button class="glyphicon glyphicon-refresh" ng-click="$ctrl.onLoad()">刷新</button>
+</div>
+<div class="container">
+    <div class="row" ng-show="($ctrl.ready==false && $ctrl.error==false)">
+        <div class="col-md-12">
+            <p>
+                <i class="fa fa-refresh fa-spiner" style="font-size:larger"></i><b>加载中...</b>
+            </p>
+        </div>
+    </div>
+    <div class="row" ng-show="($ctrl.error)">
+        <div class="col-md-12">
+            <p>
+                <span class="fa fa-error"></span><b>加载出错啦</b>
+            </p>
+        </div>
+    </div>
+    <div class="row" ng-show="($ctrl.ready && $ctrl.list.length>0)">
+        <div class="col-md-12 table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>产品名称</th>
+                        <th>产品尺寸</th>
+                        <th>库存量</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="product in $ctrl.list" product-detail product="product" delete-product="$ctrl.deleteProduct(p)"></tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>

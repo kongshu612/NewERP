@@ -1,0 +1,19 @@
+﻿<td>
+    <span ng-switch="editMode">
+        <input ng-switch-when="true" type="text" ng-model="catalog.Name"/>
+        <span ng-switch-when="false">{{catalog.Name}}</span>
+    </span>
+</td>
+<td>
+    <span ng-switch="editMode">
+        <input ng-switch-when="true" type="text" ng-model="catalog.Description" />
+        <span ng-switch-when="false">{{catalog.Description}}</span>
+    </span>
+</td>
+<td>
+    <span ng-switch="editMode">
+        <button class="glyphicon glyphicon-save" ng-switch-when="true" ng-click="cd.handleEdit()">保存</button>
+        <button class="glyphicon glyphicon-edit" ng-switch-when="false" ng-click="cd.handleEdit()">编辑</button>
+    </span>
+    <button class="glyphicon glyphicon-remove" ng-click="deleteCatalog({c:catalog})">删除</button>
+</td>

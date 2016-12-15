@@ -1,0 +1,35 @@
+﻿<div>
+    <button class="glyphicon glyphicon-plus" ng-click="cl.addCatalog()">添加</button>
+    <button class="glyphicon glyphicon-refresh" ng-click="cl.reflesh()">刷新</button>
+</div>
+<div class="container">
+    <div class="row" ng-show="(cl.ready==false&&cl.error==false)">
+        <p>
+            <i class="fa fa-refresh fa-spiner" style="font-size:larger"></i><span>加载中...</span>
+        </p>
+    </div>
+    <div class="row" ng-show="(cl.error)">
+        <p>
+            <i class="fa fa-exclamation-triangle"></i><span>出错啦</span>
+        </p>
+    </div>
+    <div class="row" ng-show="(cl.ready)">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>描述</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="catalog in cl.catalogsList" catalog-detail each-catalog="catalog" delete-catalog="cl.deleteCatalog(c)">
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+

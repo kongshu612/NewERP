@@ -21,13 +21,13 @@ namespace ModelMapper
         //    this.HasRequired(e => e.Customer).WithMany(t => t.Orders).HasForeignKey(s => s.CustomerId);           
             this.Property(e => e.OrderId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).IsRequired();
             this.Property(e => e.Count).IsRequired();
-         //   this.Property(e => e.CreatedTime).IsRequired().HasColumnType("smalldatetime");
+            this.Property(e => e.CreatedTime).IsRequired();
+            this.Property(e => e.SentTime).IsOptional();
             this.Property(e => e.Description).IsOptional().HasMaxLength(1000);
             this.Property(e => e.DestinationAddress).IsRequired().HasMaxLength(500);
             this.Property(e => e.ExpressId).IsOptional().HasMaxLength(50);
             this.Property(e => e.IsPayed).IsRequired();
             this.Property(e => e.TotalPrice).IsRequired();
-       //     this.Property(e => e.SendedTime).IsOptional().HasColumnType("samlldatetime");
-        }
+       }
     }
 }

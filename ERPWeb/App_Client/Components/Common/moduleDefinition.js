@@ -1,0 +1,1 @@
+﻿angular.module("ERPApp", ["ngDialog", 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'uiSwitch'])

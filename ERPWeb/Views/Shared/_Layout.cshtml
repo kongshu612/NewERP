@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - ERP</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/font-awesome.min.css")
+    @Styles.Render("~/Content/ngDialog.css")
+    @Styles.Render("~/Content/ngDialog.min.css")
+    @Styles.Render("~/Content/ngDialog-theme-default.css")
+    @Styles.Render("~/Content/angular-ui-switch.css")
+    @Styles.Render("~/Content/bootstrap.min.css")
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/angular.min.js")
+    @Scripts.Render("~/Scripts/angular-animate.js")
+    @Scripts.Render("~/Scripts/angular-sanitize.js")
+    @Scripts.Render("~/Scripts/angular-resource.min.js")
+    @Scripts.Render("~/Scripts/ngDialog.js")
+    @Scripts.Render("~/Scripts/ngDialog.min.js")
+    @Scripts.Render("~/App_Client/Components/Common/moduleDefinition.js")
+    @Scripts.Render("~/App_Client/Components/Common/CRUDService.js")
+    @Scripts.Render("~/App_Client/Services/ConfirmDialog.js")
+    
+
+
+    @*<script type="text/javascript" src="~/Scripts/angular.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/angular-animate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/angular-resource.min.js"></script>*@
+    <script type="text/javascript" src="~/Scripts/angular-ui-switch.js"></script>
+    <script type="text/javascript" src="~/Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+
+    @RenderSection("header",required:false)
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("ERP", "Index", "WorkSpace", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                            生产管理
+                            <b class="caret"></b>
+                        </a>
+                        <ul id="menuProduct" class="dropdown-menu">
+                            <li>@Html.ActionLink("产品类型", "GetProducts", "Products")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                            客户管理
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("客户列表","GetCustomers","Customers")</li>
+                            <li>@Html.ActionLink("客户类型管理","GetCatalogs","Catalogs")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                            销售管理
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("销售订单", "GetOrderList", "OrderList")</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-user"></span>
+                            退出
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-log-in"></span>
+                            登录
+                        </a>
+
+                    </li>
+                </ul>
+            </div>            
+        </div>
+    </div>
+    <div class="navbar navbar-default navbar-fixed-bottom">当前操作</div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - ERP管理系统</p>
+        </footer>
+    </div>
+
+   
+</body>
+</html>

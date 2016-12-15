@@ -1,0 +1,16 @@
+﻿<td>
+    <span>{{index}}</span>
+</td>
+<td>
+    <span>{{customer.Name}}</span>
+</td>
+<td>
+    <span>{{customer.Address}}</span>    
+</td>
+<td colspan="2">
+    <span>{{customer.Description}}</span>
+</td>
+<td>
+    <button class="glyphicon glyphicon-edit" ng-click="cdc.handleEditMode()">编辑</button>
+    <button class="glyphicon glyphicon-remove" ng-click="removeCustomer({c:customer})">删除</button>
+</td>

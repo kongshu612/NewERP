@@ -1,0 +1,107 @@
+﻿<div class="ngdialog-message">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="Product">产品名称:</label>
+            <div class="col-sm-9">
+                <select class="form-control" id="Product" ng-model="order.Product" ng-options="eachProduct.Name for eachProduct in productList track by eachProduct.Id"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <label class="control-label col-sm-3" for="Customer">客户:</label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="Customer" ng-model="order.Customer" ng-options="eachCustomer.Name for eachCustomer in customerList track by eachCustomer.Id"></select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="Contacter">联系人:</label>
+            <div class="col-sm-9">
+                <select class="form-control" id="Contacter" ng-model="order.Contacter" ng-options="eachContacter.Name for eachContacter in order.Customer.Contacters track by eachContacter.Id"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="expressId">快递单号:</label>
+            <div class="col-sm-9">
+                <input class="form-control" type="text" id="expressId" ng-model="order.ExpressId" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="DesAddr">收货地址:</label>
+            <div class="col-sm-9">
+                <input class="form-control" type="text" id="DesAddr" ng-model="order.DestinationAddress" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <label class="control-label col-sm-3" for="CreatedTime">创建时间:</label>
+                <div class="col-sm-9">
+                    <p class="input-group">
+                        <input class="form-control" id="CreatedTime" type="text" ng-model="order.CreatedTime"
+                               uib-datepicker-popup is-open="createdTimePickerShow" datepicker-options="dateOptions"
+                               close-text="关闭" current-text="今天" clear-text="清除" ng-required="true" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" ng-click="showCalendar('CreatedTime')" ><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                </div>                
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <label class="control-label col-sm-3" for="SentTime">发货时间:</label>
+                <div class="col-sm-9">
+                    <p class="input-group">
+                        <input class="form-control" id="SentTime" type="text" ng-model="order.SentTime" 
+                               uib-datepicker-popup is-open="sentTimePickerShow" datepicker-options="dateOptions"
+                               close-text="关闭" current-text="今天" clear-text="清除" ng-required="true"
+                               />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" ng-click="showCalendar('SentTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="Count">数量:</label>
+            <div class="col-sm-9">
+                <p class="input-group">
+                    <input class="form-control" type="number" ng-model="order.Count" id="Count"/>
+                    <span class="input-group-addon" >片</span>
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="TotalPrice">总价:</label>
+            <div class="col-sm-9">
+                <p class="input-group">
+                    <span class="input-group-addon">¥</span>
+                    <input class="form-control" type="number" ng-model="order.TotalPrice" id="TotalPrice" />
+                    <span class="input-group-addon">元</span>
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="IsPayed">支付状态:</label>
+            <div ng-switch="order.IsPayed" class="col-sm-9 input-group">
+                    <div ng-switch-when="true">
+                        <switch id="IsPayed" ng-model="order.IsPayed"></switch>
+                        <i class="fa fa-check" style="color:green"></i><b>已支付</b>
+                    </div>
+                    <div ng-switch-when="false">
+                        <switch id="IsPayed" ng-model="order.IsPayed"></switch>
+                        <i class="fa fa-warning" style="color:red"></i><b>未支付</b>
+                    </div>  
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="Description">描述:</label>
+            <textarea rows="5" cols="70" id="Description" class="form-control col-sm-9">{{order.Description}}</textarea>
+        </div>
+        <div class="form-group">
+            <input type="button" ng-click="confirm()" class="glyphicon glyphicon-ok" value="确定"/>
+            <input type="button" ng-click="closeThisDialog()" class="glyphicon glyphicon-remove" value="取消"/>
+        </div>
+    </form>    
+</div>

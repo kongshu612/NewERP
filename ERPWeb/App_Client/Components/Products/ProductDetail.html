@@ -1,0 +1,25 @@
+﻿<td>
+    <span ng-switch="editMode">
+        <input ng-switch-when="true" type="text" ng-model="product.Name" />
+        <span ng-switch-when="false">{{product.Name}}</span>
+    </span>
+</td>
+<td>
+    <span ng-switch="editMode">
+        <input ng-switch-when="true" type="number" ng-model="product.Size" />
+        <span ng-switch-when=false>{{product.Size}}</span>
+    </span>
+</td>
+<td>
+    <span ng-switch="editMode">
+        <input ng-switch-when="true" type="number" ng-model="product.Count" />
+        <span ng-switch-when="false">{{product.Count}}</span>
+    </span>
+</td>
+<td>
+    <span ng-switch="editMode">
+        <button class="glyphicon glyphicon-ok" ng-switch-when="true" ng-click="pdc.HandleModeChange()">保存</button>
+        <button class="glyphicon glyphicon-edit" ng-switch-when="false" ng-click="pdc.HandleModeChange()">编辑</button>
+    </span>
+    <button class="glyphicon glyphicon-trash" ng-click="deleteProduct({p:product})">删除</button>
+</td>

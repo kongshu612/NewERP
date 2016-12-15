@@ -1,0 +1,33 @@
+﻿<div>
+    <button class="glyphicon glyphicon-plus" ng-click="cuc.add()">添加</button>
+    <button class="glyphicon glyphicon-refresh" ng-click="cuc.reflesh()">刷新</button>
+</div>
+<div class="container">
+    <div class="row" ng-show="(cuc.loading&&!cuc.error)">
+        <p>
+            <i class="fa fa-refresh fa-spinner fa-4x"></i><span>加载中...</span>
+        </p>
+    </div>
+    <div class="row" ng-show="cuc.error">
+        <p>
+            <i class="fa fa-warning fa-4x"></i><span>出错啦...</span>
+        </p>
+    </div>
+    <div id="divCustomers" class="panel-group row" ng-show="(!cuc.loading&&!cuc.error)">
+        <table class="table table-responsive">
+            <thead class="table-inverse">
+                <tr>
+                    <th>#</th>
+                    <th>名称</th>
+                    <th>地址</th>
+                    <th>描述</th>
+                    <th></th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="eachCustomer in cuc.customerList" ng-init="index=$index+1" customer-detail customer="eachCustomer" catalog-list="cuc.catalogList" index="index" remove-customer="cuc.removeCustomer(c)"></tr>
+            </tbody>
+        </table>
+    </div>
+</div>

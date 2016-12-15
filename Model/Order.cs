@@ -10,8 +10,23 @@ namespace Model
     {
         public int OrderId { get; set; }
         public string Description { get; set; }
-   //     public DateTime CreatedTime { get; set; }
-  //      public DateTime SendedTime { get; set; }
+        private DateTime createdTime;
+        public DateTime CreatedTime
+        {
+            get
+            {
+                if(createdTime==null)
+                {
+                    createdTime = DateTime.UtcNow;
+                }
+                return createdTime;
+            }
+            set
+            {
+                createdTime = value;
+            }
+        }
+        public DateTime SentTime { get; set; }
         public string ExpressId { get; set; }
         public string DestinationAddress { get; set; }
         public bool IsPayed { get; set; }

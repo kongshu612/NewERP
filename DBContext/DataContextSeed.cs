@@ -46,8 +46,8 @@ namespace DBContext
             _ct.Contacters.Add(Contacter3);
             _ct.SaveChanges();
 
-            Order Order1 = new Order() { Contacter = Contacter1,/* Customer = Customer1,*/ Count = 10000, Product = Product1, /*CreatedTime = DateTime.Now,*/ TotalPrice = 100000, IsPayed = false, DestinationAddress = "Address1" };
-            Order Order2 = new Order() { Contacter = Contacter2,/* Customer = Customer1,*/ Count = 10000, Product = Product2, /*CreatedTime = DateTime.Now,*/ TotalPrice = 100000, IsPayed = false, DestinationAddress = "Address2" };
+            Order Order1 = new Order() { Contacter = Contacter1,/* Customer = Customer1,*/ Count = 10000, Product = Product1, CreatedTime = DateTime.UtcNow,SentTime=DateTime.UtcNow, TotalPrice = 100000, IsPayed = false, DestinationAddress = "Address1" };
+            Order Order2 = new Order() { Contacter = Contacter2,/* Customer = Customer1,*/ Count = 10000, Product = Product2, CreatedTime = DateTime.UtcNow, SentTime = DateTime.UtcNow, TotalPrice = 100000, IsPayed = false, DestinationAddress = "Address2" };
             _ct.Orders.Add(Order1);
             _ct.Orders.Add(Order2);
             _ct.SaveChanges();

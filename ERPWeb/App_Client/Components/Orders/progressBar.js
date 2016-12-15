@@ -1,0 +1,3 @@
+﻿function progressBarController($scope) {
+
+}

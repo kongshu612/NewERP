@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "OrderListView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section header
+{
+    @*<script type="text/javascript" src="~/Scripts/angular-ui/ui-bootstrap-tpls.js"></script>*@
+
+    <script type="text/javascript" src="~/App_Client/Components/Orders/orderService.js"></script>
+    <script type="text/javascript" src="~/App_Client/Components/Customers/customerService.js"></script>
+    <script type="text/javascript" src="~/App_Client/Components/Products/ProductService.js"></script>
+    <script type="text/javascript" src="~/App_Client/Components/Orders/orderEditDialog.js"></script>
+    <script type="text/javascript" src="~/App_Client/Components/Orders/orderList.js"></script>
+    <script type="text/javascript" src="~/App_Client/Components/Orders/progressBar.js"></script>
+    <script type="text/javascript" src="~/App_Client/Components/Orders/orderDetail.js"></script>
+
+}
+
+<div ng-app="ERPApp">
+    <order-List>
+
+    </order-List>
+</div>
+

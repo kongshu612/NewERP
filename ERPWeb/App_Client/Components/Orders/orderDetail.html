@@ -1,0 +1,25 @@
+﻿<td>
+    <span>{{order.CreatedTime}}</span>
+</td>
+<td>
+    <span>{{order.Product.Name}}</span>
+</td>
+<td>
+    <span>{{order.TotalPrice}}</span>
+</td>
+<td>
+    <div>
+        <p ng-show="order.IsPayed">
+            <i class="fa fa-check" style="color:green"></i><b>已支付</b>
+        </p> 
+        <p ng-show="(!order.IsPayed)">
+            <i class="fa fa-warning" style="color:red"></i><b>未支付</b>
+        </p>
+    </div>
+</td>
+<td>
+    <div>
+        <button ng-click="ODC.edit()"><i class="fa fa-edit"></i>编辑</button>
+        <button ng-click="ODC.delete()"><i class="fa fa-remove"></i>删除</button>
+    </div>
+</td>

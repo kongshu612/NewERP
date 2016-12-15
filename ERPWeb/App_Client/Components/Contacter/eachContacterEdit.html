@@ -1,0 +1,20 @@
+﻿<div class="ngdialog-message">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="Name">姓名：</label>
+            <div class="col-sm-9">
+                <input type="text" id="Name" class="form-control" ng-model="contacter.Name" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="Telephones">联系号码：</label>
+            <div class="col-sm-9">
+                <input type="text" id="Telephones" class="form-control" ng-model="contacter.Telephones" />
+            </div>
+            </div>
+    </form>
+    <div>
+        <button ng-click="ecec.save()">保存</button>
+        <button ng-click="ecec.cancel()">取消</button>
+    </div>
+</div>

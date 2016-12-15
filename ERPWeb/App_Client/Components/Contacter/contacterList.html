@@ -1,0 +1,18 @@
+﻿<div >
+    <button class="glyphicon glyphicon-plus" ng-click="contacterController.addNewContacter()">添加</button>
+</div>
+<div class="form-horizontal">
+    <table class="table">
+        <thead >
+            <tr class="form-group">
+                <td>姓名</td>
+                <td>操作</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="form-group" ng-repeat="eachcontacter in contacterController.contacters" contacter="eachcontacter" 
+                contacter-Edit delete-Contacter="contacterController.deleteContacter(c)">
+            </tr>
+        </tbody>
+    </table>
+</div>
