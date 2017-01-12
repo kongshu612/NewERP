@@ -10,6 +10,6 @@ namespace ERPWeb.ViewModels
         public int Id { get; set; }
         public string Name { get; set; }
         public string Telephones { get; set; }
-
+        public int CustomerId { get; set; }
     }
 }

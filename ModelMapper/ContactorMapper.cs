@@ -22,7 +22,7 @@ namespace ModelMapper
             this.Property(e => e.ContacterId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).IsRequired();
             this.Property(e => e.Name).IsRequired().IsUnicode().HasMaxLength(50);
             this.Property(e => e.Telephones).IsRequired().IsUnicode().HasMaxLength(100);
-            
+            this.Property(e => e.CustomerId).IsRequired();
         }
     }
 }

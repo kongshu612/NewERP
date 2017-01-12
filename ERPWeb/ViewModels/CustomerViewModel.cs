@@ -14,5 +14,10 @@ namespace ERPWeb.ViewModels
         public  CatalogsViewModel Catalog { get; set; }
         public  string Credit { get; set; }
         public List<ContacterViewModel> Contacters { get; set; }
+
+        public CustomerViewModel()
+        {
+            Contacters = new List<ContacterViewModel>();
+        }
     }
 }

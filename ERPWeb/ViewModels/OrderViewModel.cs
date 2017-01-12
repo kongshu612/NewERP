@@ -11,8 +11,8 @@ namespace ERPWeb.ViewModels
         public string Description { get; set; }
         public string ExpressId { get; set; }
         public string DestinationAddress { get; set; }
-        public string CreatedTime { get; set; }
-        public string SentTime { get; set; }
+        public DateTime CreatedTime { get; set; }
+        public DateTime? SentTime { get; set; }
         public bool IsPayed { get; set; }
         public double TotalPrice { get; set; }
         public double Count { get; set; }

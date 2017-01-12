@@ -16,7 +16,8 @@ namespace DBContext
         {
             this.Configuration.LazyLoadingEnabled = false;
             this.Configuration.ProxyCreationEnabled = false;
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DataContext, DataContextMigrationConfiguration>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataContext>());
+            Database.Initialize(false);
         }
         public DbSet<Catalog> Catalogs { get; set; }
         public DbSet<Contacter> Contacters { get; set; }

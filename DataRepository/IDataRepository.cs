@@ -35,6 +35,7 @@ namespace DataRepository
         Customer GetCustomerByOrder(Order order);
         IQueryable<Customer> GetCustomersByCatalog(Catalog catalog);
         IQueryable<Customer> GetCustomers();
+        Customer GetCustomerByProperties(string Name, string Address, string Description);
 
         bool Add(Contacter Contacter);
         bool DeleteContacterById(int ContacterId);

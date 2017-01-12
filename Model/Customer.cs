@@ -20,6 +20,8 @@ namespace Model
         public Customer()
         {
             Contacters = new List<Contacter>();
+            Catalog = new Catalog();
+            Credit = new Credit();
         }
     }
 }

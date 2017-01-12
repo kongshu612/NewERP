@@ -293,6 +293,14 @@ namespace DataRepository
         {
             return _dct.Customers.Include("Contacters").AsQueryable();
         }
+
+        public Customer GetCustomerByProperties(string Name,string Address,string Description)
+        {
+           return  _dct.Customers
+                .Include("Contacters")
+                .Where(t => t.Name == Name && t.Address == Address && t.Description == Description)
+                .FirstOrDefault();
+        }
         #endregion
 
         #region Contacter table
@@ -456,7 +464,12 @@ namespace DataRepository
         /// <returns></returns>
         public IQueryable<Order> GetOrders()
         {
-            return _dct.Orders.AsQueryable();
+            List<Order> orders = _dct.Orders
+                                     .Include("Contacter")
+                                    .ToList();
+            orders.ForEach(t => t.Customer = t.Contacter.Customer);
+            return orders
+                    .AsQueryable();
         }
         /// <summary>
         /// 

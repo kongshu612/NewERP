@@ -1,4 +1,4 @@
-﻿function catalogsListController( CRUDService) {
+﻿function catalogsListController( CRUDService,confirmDialogCtrl) {
     var cl = this;
     cl.catalogsList = [];
     cl.ready = false;
@@ -13,23 +13,26 @@
             .then(function successCallback(response) {
             ac = response.data;
             cl.catalogsList.push(ac);
-        }, function failCallback(response) {
-            alert("error occur");
+            }, function failCallback(response) {
+                confirmDialogCtrl.ConfirmDialog("添加客户类型失败");
             ac = null;
         });
     };
     cl.deleteCatalog = function (catalog) {
         var index = cl.catalogsList.indexOf(catalog);
         if (index >= 0) {
-            CRUDService.delete("/api/catalogs/"+catalog.Id)
-                .then(
-                    function successCallback(response) {
-                        cl.catalogsList.splice(index, 1);
-                    },
-                    function failCallback(response) {
-                        alert("delete eror");
-                    }
-                );
+            var ngDialogInstance = confirmDialogCtrl.DeleteConfirmDialog("确定要删除选择的类别吗？");
+            ngDialogInstance.then(function () {
+                CRUDService.delete("/api/catalogs/" + catalog.Id)
+                    .then(
+                        function successCallback(response) {
+                            cl.catalogsList.splice(index, 1);
+                        },
+                        function failCallback(response) {
+                            confirmDialogCtrl.ConfirmDialog("删除客户类型失败");
+                        }
+                    );
+            });
         }
     };
     cl.reflesh = function () {

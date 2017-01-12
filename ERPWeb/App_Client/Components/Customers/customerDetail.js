@@ -18,15 +18,21 @@ function customerDetailController($scope, customerService, catalogService, ngDia
     cdc = this;
     cdc.handleEditMode = function () {
         $scope.originalcustomer = angular.copy($scope.customer);
-        ngDialog.openConfirm({
+        var ngDialogInstance = ngDialog.openConfirm({
             template: "/../App_Client/Components/Customers/customerEdition.html",
             controller: "customerEditionDialogController",
             className: "ngdialog-theme-default ngdialog-theme-custom",
             scope: $scope,
-            closeByDocument: false
+            closeByDocument: false,
+            showClose: false
         });
+        ngDialogInstance.catch(function () {
+            $scope.originalcustomer.contacters = $scope.customer.contacters;
+            $scope.customer = $scope.originalcustomer;
+                        });
     };
-    $scope.$on('ngDialog.closing', closingCustomerDialog);
+   
+  //  $scope.$on('ngDialog.closing', closingCustomerDialog);
     cdc.loadCatalog = function () {
         catalogService.Load()
                     .then(
@@ -47,7 +53,6 @@ function customerDetailController($scope, customerService, catalogService, ngDia
                         function successCallback(response) {
                         },
                         function failCallback(response) {
-                            // alert("update customer failed");
                             confirmDialogCtrl.ConfirmDialog("更新客户信息失败，请稍后再试！");
                         }
                     );

@@ -2,22 +2,26 @@
     var cec = this;
     $scope.handleEditMode = function () {
         cec.originalValue = angular.copy($scope.contacter);
-        ngDialog.openConfirm({
+        var updateContacterInstance = ngDialog.openConfirm({
             template:"/../App_Client/Components/Contacter/eachContacterEdit.html",
             controller: "eachContacterEditController",
             controllerAs:"ecec",
             scope: $scope,
             closeByDocument: false
-            });
+        });
+        updateContacterInstance.then(function successCallback(response) {
+            $scope.contacter = response;
+        },
+        function failCallback(response) {
+            $scope.contacter = angular.copy(cec.originalValue);
+            confirmDialogCtrl.ConfirmDialog("更新联系人失败");
+        });
     };
     this.$onInit = function () {
         $scope.EditMode = false;
     }
     cec.revertContacter = function () {
-        console.log("revert the contacter value");
-        $scope.contacter.Name = cec.originalValue.Name;
-        $scope.contacter.Telephones = cec.originalValue.Telephones;
-        $scope.contacter.Id = cec.originalValue.Id;
+        $scope.contacter = angular.copy(cec.originalValue);
     }
 };
 function contacterEditDirective() {

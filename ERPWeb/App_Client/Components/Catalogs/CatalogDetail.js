@@ -10,7 +10,7 @@
                                 $scope.catalog.Name = response.data.Name;
                                 $scope.catalog.Description = response.data.Description;
                             }, function failCallback(response) {
-                                confirmDialogCtrl.ConfirmDialog("更新出错啦");
+                                confirmDialogCtrl.ConfirmDialog("客户类型更新出错啦");
                                 $scope.catalog.Id = $scope.originalCatalog.Id;
                                 $scope.catalog.Name = $scope.originalCatalog.Name;
                                 $scope.catalog.Description = $scope.originalCatalog.Description;

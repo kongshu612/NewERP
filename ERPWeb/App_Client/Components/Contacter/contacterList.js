@@ -1,32 +1,47 @@
-﻿function contacterListController($scope, contacterService) {
+﻿function contacterListController($scope, contacterService,confirmDialogCtrl,ngDialog) {
     var contacterController = this;
     contacterController.addNewContacter = function () {
-        var newContacter = { Id: -1, Name: "", Telephones: "" };
-        contacterService.AddContacter(contacterController.customer.Id, newContacter)
-                        .then(
-                            function successCallback(response) {
-                                contacterController.contacters.push(response.data);
-                            },
-                            function failCallback(response){
-                                alert("Failed to create new contacter");
-                            }
-                        );
+        var newContacter = { Id: -1, Name: "", Telephones: "", CustomerId: contacterController.customer.Id };
+        $scope.contacter = newContacter;
+        var newContacterInstance = ngDialog.openConfirm({
+            template: "/../App_Client/Components/Contacter/eachContacterEdit.html",
+            controller: "eachContacterEditController",
+            controllerAs: "ecec",
+            scope: $scope,
+            closeByDocument: false,
+            showClose: false
+        });
+        newContacterInstance.then(function successCallback(responsedContacter) {
+            contacterController.contacters.push(responsedContacter);
+        });
+        //contacterService.AddContacter(contacterController.customer.Id, newContacter)
+        //                .then(
+        //                    function successCallback(response) {
+        //                        contacterController.contacters.push(response.data);
+        //                    },
+        //                    function failCallback(response) {
+        //                        confirmDialogCtrl.ConfirmDialog("创建新的联系人失败");
+        //                    }
+        //                );
     };
     contacterController.deleteContacter = function (c) {
         var index = contacterController.contacters.indexOf(c);
         if (index >= 0) {
-            contacterService.deleteContacter(c.Id, contacterController.customer.Id)
-                            .then(
-                                function successCallback(response) {
-                                    contacterController.contacters.splice(index, 1);
-                                },
-                                function failCallback(response) {
-                                    alert("delete contacter error, server side");
-                                }
-                            )
+            var ngDialogInstance = confirmDialogCtrl.DeleteConfirmDialog("确定要删除选择的联系人吗？");
+            ngDialogInstance.then(function () {
+                contacterService.deleteContacter(contacterController.customer.Id,c.Id)
+                                .then(
+                                    function successCallback(response) {
+                                        contacterController.contacters.splice(index, 1);
+                                    },
+                                    function failCallback(response) {
+                                        confirmDialogCtrl.ConfirmDialog("删除联系人失败");
+                                    }
+                                )
+            });
         }
         else {
-            alert("delete contacter error,client side");
+            confirmDialogCtrl.ConfirmDialog("删除联系人失败，请刷新页面重试");
         }
     };
 

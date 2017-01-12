@@ -6,14 +6,16 @@
 </td>
 <td>
     <span ng-switch="editMode">
-        <input ng-switch-when="true" type="number" ng-model="product.Size" />
+        <input ng-switch-when="true" type="number" ng-model="product.Size"  />
         <span ng-switch-when=false>{{product.Size}}</span>
+        <span>φmm</span>
     </span>
 </td>
 <td>
     <span ng-switch="editMode">
         <input ng-switch-when="true" type="number" ng-model="product.Count" />
         <span ng-switch-when="false">{{product.Count}}</span>
+        <span>件</span>
     </span>
 </td>
 <td>

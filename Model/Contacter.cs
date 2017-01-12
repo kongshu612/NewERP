@@ -17,6 +17,7 @@ namespace Model
         public Contacter()
         {
             Orders = new List<Order>();
+            Customer = new Customer();
         }
     }
 }

@@ -9,7 +9,7 @@ namespace ERPWeb.ViewModels
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public float Size { get; set; }
+        public double Size { get; set; }
         public int Count { get; set; }
     }
 }

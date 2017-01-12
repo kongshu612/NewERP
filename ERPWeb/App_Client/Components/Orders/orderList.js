@@ -1,35 +1,89 @@
-﻿function orderListController($scope,orderService) {
+﻿function orderListController($scope,ngDialog, orderService,productService,customerService, confirmDialogCtrl, progressBarDialogCtrl) {
     var olc = this;
     olc.refresh = function () {
         olc.isError = false;
         olc.isLoaded = false;
         olc.orderList = [];
+        productService.LoadProduct().catch(function () { olc.isError = true; });
+        customerService.loadCustomers().catch(function () { olc.isError = true; });
         orderService.getOrderList()
                     .then(
                         function successCallback(response) {
                             olc.isLoaded = true;
                             olc.orderList = response.data;
+                            olc.orderList.forEach(function (currentValue, index, array) {
+                                array[index].CreatedTime = new Date(currentValue.CreatedTime);
+                                array[index].SentTime = currentValue.SentTime==null ? null : new Date(currentValue.SentTime);
+                            })
                         },
                         function failCallback(response) {
                             olc.isError = true;
-                            console.log("error occur while loading orderList");
                         }
                     );
     }
     olc.add = function () {
-
+        if(productService.productList.length==0){
+            confirmDialogCtrl.ConfirmDialog("请确定是否有产品信息添加到当前系统，或者刷新页面重新尝试");
+            return;
+        }
+        if (customerService.customerList.length == 0) {
+            confirmDialogCtrl.ConfirmDialog("请确定是否有客户信息添加到当前系统，或者刷新页面重新尝试");
+            return;
+        }
+        $scope.order = {
+            OrderId:-1,
+            Description: "",
+            ExpressId: "",
+            DestinationAddress: "",
+            CreatedTime: new Date(),
+            SentTime: null,
+            IsPayed: false,
+            TotalPrice: 0,
+            Count: 0,
+            Product: productService.productList[0],
+            Customer: customerService.customerList[0],
+            Contacter: customerService.customerList[0].Contacters[0]
+        }
+        olc.createdOrderDialog = ngDialog.openConfirm(
+        {
+            template: "/../App_Client/Components/Orders/orderEditDialog.html",
+            controller: orderEditDialogController,
+            ControllerAs:"OEDC",
+            className: "ngdialog-theme-default ngdialog-theme-custom",
+            scope: $scope,
+            closeByDocument: false,
+            width: 500,
+            showClose: false
+        });
+        olc.createdOrderDialog.then(
+            function successCallback(responsedOrder) {
+                olc.orderList.push($scope.order);                
+            },
+            function failCallback() {
+                $scope.order = {};
+            });
     };
     olc.deleteOrder = function (order) {
-
+        var index = olc.orderList.indexOf(order);
+        var ngDialogInstance = confirmDialogCtrl.DeleteConfirmDialog("确定要删除选择的订单吗？");
+        ngDialogInstance.then(function () {
+            if (order.OrderId == 0) {
+                olc.orderList.splice(index, 1);
+            }
+            else {
+                orderService.deleteOrder(order.OrderId)
+                            .then(
+                                function successCallback(response) {
+                                    olc.orderList.splice(index, 1);
+                                }
+                            );
+            }
+        });
     }
     olc.$onInit = function () {
-        // olc.refresh();
-        olc.isLoaded = true;
-        olc.orderList = [
-            { OrderId: 1, CreatedTime: Date(), SentTime: Date(), IsPayed: true, TotalPrice: 1000, Product: { Name: "product1", Id: 1 }, Customer: { Name: "customer1", Id: 1, Contacters: [{ Name: "contacter1", Id: 1 }, { Name: "contacter2", Id: 2 }] }, Contacter: { Id: 1, Name: "contacter1" } },
-            { OrderId: 2, CreatedTime: Date(), SentTime: Date(), IsPayed: false, TotalPrice: 1000, Product: { Name: "product2", Id: 2 }, Customer: { Name: "customer2", Id: 2, Contacters: [{ Name: "contacter3", Id: 3 }, { Name: "contacter4", Id: 4 }] }, Contacter: { Id: 3, Name: "contacter3" } }
-        ]
+        olc.refresh();
     }
+
 }
 
 angular.module("ERPApp")

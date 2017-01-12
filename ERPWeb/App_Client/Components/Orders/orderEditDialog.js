@@ -1,4 +1,4 @@
-﻿function orderEditDialogController($scope, productService,customerService) {    
+﻿function orderEditDialogController($scope, productService, customerService, orderService) {
     if (productService.productList.length == 0) {
         productService.LoadProduct().then(
             function (response) {
@@ -42,6 +42,20 @@
     };
     $scope.showCalendarForCreatedTime = function () {
         $scope.createdTimePickerShow = true;
+    }
+    $scope.confirmButtonClick = function () {
+        orderService.addOrUpdate($scope.order)
+        .then(
+        function successCallback(order) {
+            $scope.confirm(order);
+        },
+        function failCallback(order) {
+            $scope.closeThisDialog(order);
+        }
+        );
+    }
+    $scope.cancelButtonClick = function () {
+        $scope.closeThisDialog($scope.order);
     }
 }
 

@@ -15,10 +15,10 @@ namespace ModelMapper
         public CustomerMapper()
         {
             this.ToTable("Customers");
-            this.HasKey(e => e.CustomerId); 
-            this.HasRequired(e => e.Catalog).WithMany().HasForeignKey(s=>s.CatalogId);
-            this.HasMany(e => e.Contacters)
-                .WithRequired(t => t.Customer);
+            this.HasKey(e => e.CustomerId);
+            this.HasRequired(e => e.Catalog).WithMany(t => t.Customers).HasForeignKey(s => s.CatalogId);
+            //this.HasMany(e => e.Contacters)
+            //    .WithRequired(t => t.Customer);
             //  this.has
 
             this.Property(e => e.CustomerId).IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);

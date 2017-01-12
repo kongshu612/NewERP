@@ -17,7 +17,7 @@ namespace Model
             {
                 if(createdTime==null)
                 {
-                    createdTime = DateTime.UtcNow;
+                    createdTime = DateTime.Today;
                 }
                 return createdTime;
             }
@@ -26,12 +26,11 @@ namespace Model
                 createdTime = value;
             }
         }
-        public DateTime SentTime { get; set; }
+        public DateTime? SentTime { get; set; }
         public string ExpressId { get; set; }
         public string DestinationAddress { get; set; }
         public bool IsPayed { get; set; }
-   //     public int CustomerId { get; set; }
-   //     public Customer Customer { get; set; }
+        public Customer Customer { get; set; }
         public int ContacterId { get; set; }
         public Contacter Contacter { get; set; }
         public double TotalPrice { get; set; }

@@ -1,5 +1,5 @@
 ﻿<td>
-    <span>{{order.CreatedTime}}</span>
+    <span ng-bind="order.CreatedTime | date:'MM/dd/yyyy'"></span>
 </td>
 <td>
     <span>{{order.Product.Name}}</span>
@@ -20,6 +20,6 @@
 <td>
     <div>
         <button ng-click="ODC.edit()"><i class="fa fa-edit"></i>编辑</button>
-        <button ng-click="ODC.delete()"><i class="fa fa-remove"></i>删除</button>
+        <button ng-click="deleteOrder({o:order})"><i class="fa fa-remove"></i>删除</button>
     </div>
 </td>

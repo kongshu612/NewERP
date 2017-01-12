@@ -1,21 +1,17 @@
 ﻿function eachContacterEditController($scope, contacterService,confirmDialogCtrl) {
     var ecec = this;
     ecec.save = function () {
-        contacterService.updateContacter($scope.contacter)
+        contacterService.addOrUpdateContacter($scope.contacter)
                         .then(
                             function successCallback(response) {
-                                $scope.confirm();
+                                $scope.confirm(response);
                             },
                             function failCallback(response) {
-                                confirmDialogCtrl.ConfirmDialog("更新联系人信息失败，请稍后再试！");
-                                console.log("update the contacter fail.revert back");
-                                $scope.contacterEditCtrl.revertContacter();
-                                $scope.closeDialog();
+                                $scope.closeThisDialog();
                             }
                         );
     };
     ecec.cancel = function () {
-        $scope.contacterEditCtrl.revertContacter();
         $scope.closeThisDialog();
     };
 }

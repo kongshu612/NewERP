@@ -37,8 +37,8 @@
                 <label class="control-label col-sm-3" for="CreatedTime">创建时间:</label>
                 <div class="col-sm-9">
                     <p class="input-group">
-                        <input class="form-control" id="CreatedTime" type="text" ng-model="order.CreatedTime"
-                               uib-datepicker-popup is-open="createdTimePickerShow" datepicker-options="dateOptions"
+                        <input class="form-control" id="CreatedTime" type="text" ng-model="order.CreatedTime" alt-input-formats="MM/dd/yyyy"
+                               uib-datepicker-popup="MM/dd/yyyy" is-open="createdTimePickerShow" datepicker-options="dateOptions"
                                close-text="关闭" current-text="今天" clear-text="清除" ng-required="true" />
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button" ng-click="showCalendar('CreatedTime')" ><i class="glyphicon glyphicon-calendar"></i></button>
@@ -52,8 +52,8 @@
                 <label class="control-label col-sm-3" for="SentTime">发货时间:</label>
                 <div class="col-sm-9">
                     <p class="input-group">
-                        <input class="form-control" id="SentTime" type="text" ng-model="order.SentTime" 
-                               uib-datepicker-popup is-open="sentTimePickerShow" datepicker-options="dateOptions"
+                        <input class="form-control" id="SentTime" type="text" ng-model="order.SentTime" alt-input-formats="MM/dd/yyyy"
+                               uib-datepicker-popup="MM/dd/yyyy" is-open="sentTimePickerShow" datepicker-options="dateOptions"
                                close-text="关闭" current-text="今天" clear-text="清除" ng-required="true"
                                />
                         <span class="input-group-btn">
@@ -100,8 +100,8 @@
             <textarea rows="5" cols="70" id="Description" class="form-control col-sm-9">{{order.Description}}</textarea>
         </div>
         <div class="form-group">
-            <input type="button" ng-click="confirm()" class="glyphicon glyphicon-ok" value="确定"/>
-            <input type="button" ng-click="closeThisDialog()" class="glyphicon glyphicon-remove" value="取消"/>
+            <input type="button" ng-click="confirmButtonClick()" class="glyphicon glyphicon-ok" value="确定"/>
+            <input type="button" ng-click="cancelButtonClick()" class="glyphicon glyphicon-remove" value="取消"/>
         </div>
     </form>    
 </div>

@@ -15,6 +15,7 @@ namespace ERPWeb.App_Start
     using System.Web.Http.Dependencies;
     using Ninject.Syntax;
     using System.Web.Http;
+    using ERPWeb.Utility;
 
     // Provides a Ninject implementation of IDependencyScope
     // which resolves services using the Ninject container.
@@ -121,8 +122,13 @@ namespace ERPWeb.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<DataContext>().ToSelf().InRequestScope();
-            kernel.Bind<IDataRepository>().To<DataRepository>().WithConstructorArgument("dct", kernel.Get<DataContext>());
+            kernel.Bind<DataContext>().ToSelf().InSingletonScope();
+            kernel.Bind<IDataRepository>().To<DataRepository>().InSingletonScope().WithConstructorArgument("dct", kernel.Get<DataContext>());
+            kernel.Bind<IModelViewModelConvertor>().To<ModelViewModelConvertor>().InSingletonScope();
+            kernel.Bind<IViewModelOperator>().To<ViewModelOperator>().InSingletonScope()
+                .WithConstructorArgument("idr", kernel.Get<IDataRepository>())
+                .WithConstructorArgument( "im2vm", kernel.Get<IModelViewModelConvertor>());
+
         }        
     }
 }
